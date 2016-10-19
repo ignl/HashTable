@@ -61,6 +61,9 @@ public class OpenAddressingHashTable {
 		return false;
 	}
 
+	/**
+	 * Hash function with linear probing.
+	 */
 	private int hash(String value, int probe) {
 		HashFunction hf = Hashing.murmur3_128(); // can choose any hash function
 		int hash = Math.abs(hf.newHasher().putString(value, Charsets.UTF_8).hash().asInt()) % SIZE;

@@ -7,12 +7,6 @@ import com.google.common.base.Charsets;
 import com.google.common.hash.HashFunction;
 import com.google.common.hash.Hashing;
 
-/**
- * Simple chaining hashtable implementation for strings.
- * 
- * @author Ignas
- *
- */
 public class HashTable {
 	
 	private static int SIZE = 1000;
@@ -22,8 +16,6 @@ public class HashTable {
 	
 	/**
 	 * Calculate hash with hash function then use it to find right bucket and add value there. 
-	 * 
-	 * @param value String value to add to hashtable
 	 */
 	public void add(String value) {
 		int hash = hash(value);
@@ -35,8 +27,7 @@ public class HashTable {
 	}
 	
 	/**
-	 * @param value
-	 * @return
+	 * Calculate hash with hash function then use it to find right bucket check if value exists in that bucket.
 	 */
 	public boolean contains(String value) {
 		int hash = hash(value);
@@ -54,8 +45,7 @@ public class HashTable {
 	}
 
 	/**
-	 * @param value
-	 * @return
+	 * Calculate hash with hash function then use it to find right bucket check if value exists in that bucket and if so remove it.
 	 */
 	public boolean remove(String value) {
 		int hash = hash(value);
@@ -74,6 +64,9 @@ public class HashTable {
 	}
 	
 	
+	/**
+	 * Hash function from Guava library.
+	 */
 	private int hash(String value) {
 		HashFunction hf = Hashing.murmur3_128(); // can choose any hash function
 		return Math.abs(hf.newHasher()
